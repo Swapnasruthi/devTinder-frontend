@@ -12,9 +12,9 @@ const Body = ()=> {
     const navigate = useNavigate();
     const userData = useSelector((store) => store.user);
     const fetchingUser = async ()=>{
-        if(userData) return userData;
+        if(userData) return;
         try{
-            const res = await axios.get("http://localhost:3000/profile",{},
+            const res = await axios.get("http://localhost:3000/profile",
                 {withCredentials:true});
             dispatch(addUser(res.data));
         }
