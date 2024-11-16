@@ -1,7 +1,53 @@
+import axios from "axios";
+import { useState } from "react";
+
 const Login = ()=>{
+
+    const [email, setEmail] = useState("dhoni@gmail.com");
+    const [password, setPassword] = useState("Dhoni@123");
+
+    const handleSubmit = async()=>{
+        try{
+            const res = await axios.post("http://localhost:3000/login",
+                {
+                    email,
+                    password
+                },{withCredentials:true});
+                
+
+        }
+        catch(err){
+            console.error(err);
+        }
+    }
     return (
-        <div>
-            <h1>Login page</h1>
+        <div className="flex justify-center my-24">
+            <div className="card bg-base-300 w-96 shadow-xl">
+                <div className="card-body">
+                    <h2 className="card-title">Login</h2>
+                    <div>
+                    <label className="form-control w-full max-w-xs my-2">
+                            <div className="label">
+                                <span className="label-text">Email ID</span>
+                             
+                            </div>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder="" className="input input-bordered w-full max-w-xs" />
+                          
+                    </label>
+                    <label className="form-control w-full max-w-xs my-2">
+                            <div className="label">
+                                <span className="label-text">Password</span>
+                             
+                            </div>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" placeholder="" className="input input-bordered w-full max-w-xs" />
+                          
+                    </label>
+                    </div>
+                    <div className="card-actions justify-end">
+                    <button className="btn btn-primary btn-sm" onClick={handleSubmit}>Submit</button>
+                    </div>
+                </div>
+                </div>
         </div>
     )
    
