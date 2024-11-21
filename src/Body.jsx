@@ -12,7 +12,10 @@ const Body = ()=> {
     const navigate = useNavigate();
     const userData = useSelector((store) => store.user);
     const fetchingUser = async ()=>{
-        if(userData) return;
+        if(userData) 
+            {
+                return navigate("/");
+            };
         try{
             const res = await axios.get("http://localhost:3000/profile",
                 {withCredentials:true});

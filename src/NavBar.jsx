@@ -7,7 +7,6 @@ const Navbar = ()=>{
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleLogout = () => {
     try{
       axios.post("http://localhost:3000/logout", {},{withCredentials:true});
