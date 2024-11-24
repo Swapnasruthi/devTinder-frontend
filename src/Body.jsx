@@ -38,7 +38,7 @@ const Body = ()=> {
     },[])
 
     return(
-        <div className="h-screen" data-theme="dark">
+        <div className="h-screen m-0 p-0 overflow-auto" data-theme="dark">
             <Navbar/>
             <Outlet/>
             <Footer/>

@@ -1,8 +1,8 @@
 const UserCard = ({user})=> {
-
-    return(
+    console.log(user.about);
+    return user && (
         <div>
-            <div className="card card-compact bg-base-300 w-96 shadow-xl">
+            <div className="card card-compact bg-base-300 w-80 shadow-xl">
             <figure>
                 <img
                 src={user.userPhoto}
@@ -10,6 +10,7 @@ const UserCard = ({user})=> {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{user.firstName +" "+ user.lastName}</h2>
+                {user.age && user.gender && <p>{user.age + ", "+user.gender}</p>}
                 <p>{user.about}</p>
                 <div className="card-actions justify-center my-2">
                 <button className="btn btn-primary">Ignore</button>
