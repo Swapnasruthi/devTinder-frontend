@@ -1,9 +1,10 @@
 const UserCard = ({user})=> {
     return user && (
         <div>
-            <div className="card card-compact bg-base-300 w-80 shadow-xl">
+            <div className="card card-compact bg-base-300 w-80 shadow-xl  max-h-[41rem]">
             <figure>
                 <img
+                className="max-h-fit h-full w-full object-top"
                 src={user.userPhoto}
                 alt="Shoes" />
             </figure>
