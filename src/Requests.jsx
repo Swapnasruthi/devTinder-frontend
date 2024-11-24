@@ -23,14 +23,15 @@ const Requests = ()=> {
     },[]);
 
     if (!requestsFeed) return;
-    if(requestsFeed.length === 0) return <div className="flex justify-center my-10">No Requests</div>
+    if(requestsFeed.length === 0) return <div className="flex justify-center my-10">No Requests Found!</div>
+
     return requestsFeed && ( 
         <div className="flex flex-col justify-center my-5">
         <div className="m-auto">
             <h1 className="text-2xl text-white font-bold mb-5">Requests</h1>
         </div>
        <div className="m-auto ">
-            {requestsFeed.map((request) => <RequestCard request={request.fromUserId}/>)}
+            {requestsFeed.map((request) => <RequestCard _id = {request._id} request={request.fromUserId}/>)}
             {/* <RequestCard request={requestsFeed[0].fromUserId}/> */}
            
        </div>

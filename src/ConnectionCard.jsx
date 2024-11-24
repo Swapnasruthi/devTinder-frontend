@@ -3,7 +3,7 @@ const ConnectionCard = ({connection})=>{
     const {firstName, lastName, gender, skills, about, userPhoto, age} = connection;
 
     return(
-        <div className="w-[34rem] max-w-xl">
+        <div className="w-[34rem] max-w-xl mb-8">
             <div className="flex flex-row shadow bg-base-300 my-5 rounded-lg">
                 <div className="p-4">
                     <div className="avatar m-auto">
