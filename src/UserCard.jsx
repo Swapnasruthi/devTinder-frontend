@@ -1,5 +1,4 @@
 const UserCard = ({user})=> {
-    console.log(user.about);
     return user && (
         <div>
             <div className="card card-compact bg-base-300 w-80 shadow-xl">
