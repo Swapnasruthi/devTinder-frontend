@@ -12,6 +12,9 @@ const UserCard = ({user})=> {
           
             const res = await axios.post("http://localhost:3000/request/send/"+status+"/"+userId,{},{withCredentials:true});
             dispatch(removeUserFromFeed(userId));
+
+            //i called here feed api here. coz, after sending the request to first user, redux feed slice is not updating and the new user is not coming into the feed. hence i called feed api again to dispatch the feed again into the redux store.
+            
             const Res = await axios.get("http://localhost:3000/feed",{withCredentials:true});
             dispatch(addFeed(Res.data));
         }
