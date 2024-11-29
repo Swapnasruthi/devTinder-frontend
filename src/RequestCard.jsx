@@ -17,7 +17,6 @@ const RequestCard = ({_id, request})=>{
         }
 
     }
-    // console.log(req);
     return (
         <div className="w-[34rem] max-w-xl">
         <div className="flex flex-row shadow bg-base-300 my-5 rounded-lg">

@@ -9,7 +9,7 @@ const Feed = ()=>{
    const feed = useSelector((store) => store.feed);
    const getFeed = async ()=>{
     try{
-        if(feed) return;
+       
         const res = await axios.get("http://localhost:3000/feed",{withCredentials:true});
         dispatch(addFeed(res.data));
     }
@@ -23,13 +23,17 @@ const Feed = ()=>{
     getFeed();
    },[]);
 
-  
+
+   if(!feed) return <div>Something Went Wrong!</div>
+   if(feed.length==0) return <div className="flex justify-center mt-10">No New Users Found!</div>
+    
     return feed &&(
-            <div className="flex justify-center mt-5">
-                <UserCard user={feed[feed.length-1]}/>
+            <div className="mt-10 flex justify-center m-auto">
+                <UserCard user={feed[0]}/>
 
             </div>
         )
 
 }
+
 export default Feed;

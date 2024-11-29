@@ -1,20 +1,53 @@
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addFeed, removeUserFromFeed } from "./utils/feedslice";
+import { useNavigate } from "react-router-dom";
+
 const UserCard = ({user})=> {
+    const dispatch = useDispatch();
+    const feed = useSelector((store) => store.feed);
+    const navigate = useNavigate();
+    const handleRequest = async (status, userId)=>  {
+        try{
+          
+            const res = await axios.post("http://localhost:3000/request/send/"+status+"/"+userId,{},{withCredentials:true});
+            dispatch(removeUserFromFeed(userId));
+            const Res = await axios.get("http://localhost:3000/feed",{withCredentials:true});
+            dispatch(addFeed(Res.data));
+        }
+
+        catch(err){
+            console.error(err.message);
+        }
+      
+
+    }
+    // console.log(user._id);
+    const {_id} = user;
     return user && (
-        <div>
-            <div className="card card-compact bg-base-300 w-80 shadow-xl  max-h-[41rem]">
+        <div className="">
+            <div className="card card-compact bg-base-300 w-80 shadow-xl max-h-[41rem]">
             <figure>
                 <img
-                className="max-h-fit h-full w-full object-top"
+                className="h-80 w-full object-top "
                 src={user.userPhoto}
                 alt="Shoes" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{user.firstName +" "+ user.lastName}</h2>
                 {user.age && user.gender && <p>{user.age + ", "+user.gender}</p>}
-                <p>{user.about}</p>
+                <p className="break-words line-clamp-2">{user.about}</p>
                 <div className="card-actions justify-center my-2">
-                <button className="btn btn-primary">Ignore</button>
-                <button className="btn btn-secondary">Interested</button>
+                <button 
+                className="btn btn-primary" 
+                onClick={()=>handleRequest("ignored",_id)}
+                >
+                Ignore
+                </button>
+                <button className="btn btn-secondary"
+                onClick={()=>handleRequest("interested",_id)}
+                >
+                Interested</button>
                 </div>
             </div>
     </div>
