@@ -4,6 +4,7 @@ import UserCard from "./UserCard";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "./utils/userSlice";
+import ProfileCard from "./ProfileCard";
 
 const ProfileEdit = ({user}) => {
 
@@ -49,7 +50,8 @@ const ProfileEdit = ({user}) => {
                         <div className="card-body p-5">
                             <h2 className="card-title">Edit Profile</h2>
                             <div>
-                            <label className="form-control w-full max-w-xs my-1">
+                            <div className="flex">
+                            <label className="form-control w-full max-w-xs my-1 mr-5">
                                     <div className="label">
                                         <span className="label-text">First Name</span>
                                     
@@ -65,6 +67,7 @@ const ProfileEdit = ({user}) => {
                                     <input value={lastName} onChange={(e)=>(setLastName(e.target.value))} type="text" placeholder="" className="input input-bordered w-full max-w-xs" />
                                 
                             </label>
+                            </div>
                             <label className="form-control w-full max-w-xs my-1">
                                     <div className="label">
                                         <span className="label-text">Age</span>
@@ -107,7 +110,7 @@ const ProfileEdit = ({user}) => {
                     </div>
                     
             </div>
-            <UserCard user={{lastName, firstName, age, gender, userPhoto, about}}/>
+            <ProfileCard user={{lastName, firstName, age, gender, userPhoto, about}}/>
 
           
         </div>

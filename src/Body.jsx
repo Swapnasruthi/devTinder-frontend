@@ -6,6 +6,7 @@ import axios from "axios";
 import { addUser } from "./utils/userSlice";
 import { useEffect } from "react";
 import Error from "./Error";
+// import { BackgroundBoxesDemo } from "./BG_UI";
 
 const Body = ()=> {
     const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Body = ()=> {
 
     return(
         <div className="h-screen m-0 p-0 overflow-auto" data-theme="dark">
+            {/* <BackgroundBoxesDemo/> */}
             <Navbar/>
             <Outlet/>
             <Footer/>

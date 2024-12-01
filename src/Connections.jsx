@@ -11,7 +11,7 @@ const Connections = ()=>{
     const fetchConnections = async()=>{
         
         try{
-            if(connectionsFeed) return;
+         
             const res = await axios.get("http://localhost:3000/user/connections",{withCredentials:true});
             dispatch(addConnections(res.data.data));
         }

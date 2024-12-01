@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "./utils/feedslice";
 import { useEffect } from "react";
 import UserCard from "./UserCard";
-
+// import {ThreeDCardDemo} from "./UIcard";
+// import { CardStackDemo } from "./UserCard2";
 const Feed = ()=>{
    const dispatch = useDispatch();
    const feed = useSelector((store) => store.feed);
@@ -30,8 +31,10 @@ const Feed = ()=>{
     return feed &&(
             <div className="mt-10 flex justify-center m-auto">
                 <UserCard user={feed[0]}/>
+                
 
             </div>
+
         )
 
 }

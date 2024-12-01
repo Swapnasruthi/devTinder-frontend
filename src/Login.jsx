@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 const Login = ()=>{
 
-    const [email, setEmail] = useState("jeevan@gmail.com");
-    const [password, setPassword] = useState("Jeevan@123");
-    const [firstName, setFirstName] = useState("jeevan");
-    const [lastName, setLastName] = useState("swaroop");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [isLogin, setLogin] = useState(true);
     const dispatch = useDispatch();
     const navigate = useNavigate();
