@@ -34,7 +34,7 @@ const UserCard = ({user})=> {
                 <img
                 className="h-80 w-full object-top "
                 src={user.userPhoto}
-                alt="Shoes" />
+                alt="user" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{user.firstName +" "+ user.lastName}</h2>

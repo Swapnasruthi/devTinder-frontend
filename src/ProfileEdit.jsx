@@ -23,9 +23,13 @@ const ProfileEdit = ({user}) => {
     const handleEdit = async()=>{
         try{
             setError("");
+            
+
             const res = await axios.patch("http://localhost:3000/profile/edit",{
             lastName, firstName, age, gender, userPhoto, about
                 },{withCredentials:true});
+            
+           
             dispatch(addUser(res.data));
             setToast(true);
             setTimeout(()=>{
@@ -33,7 +37,7 @@ const ProfileEdit = ({user}) => {
             }, 1000);
     }
     catch(err){
-        setError(err.response.data);
+        setError(err.response);
     }
     }
     

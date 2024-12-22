@@ -94,7 +94,7 @@ const Login = ()=>{
                                 <span className="label-text">Password</span>
                              
                             </div>
-                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" placeholder="" className="input input-bordered w-full max-w-xs" />
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="" className="input input-bordered w-full max-w-xs" />
                           
                     </label>
                     </div>
