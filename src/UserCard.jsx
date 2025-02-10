@@ -2,7 +2,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addFeed, removeUserFromFeed } from "./utils/feedSlice"; // Corrected import statement
 import PropTypes from 'prop-types';
-
+import { BACKEND_URL } from "./Constants";
 const UserCard = ({ user }) => {
     const dispatch = useDispatch();
   
@@ -12,7 +12,7 @@ const UserCard = ({ user }) => {
             dispatch(removeUserFromFeed(userId));
 
             // Call feed API again to update the feed in the redux store
-            const Res = await axios.get("http://localhost:3000/feed", { withCredentials: true });
+            const Res = await axios.get(BACKEND_URL+"/feed", { withCredentials: true });
             dispatch(addFeed(Res.data));
         } catch (err) {
             console.error(err.message);

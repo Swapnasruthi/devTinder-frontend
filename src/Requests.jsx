@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequests } from "./utils/requestSlice";
 import RequestCard from "./RequestCard";
-
+import { BACKEND_URL } from "./Constants";
 const Requests = ()=> {
     const dispatch = useDispatch();
     const requestsFeed = useSelector((store) => store.requests);
     const fetchRequests = async()=>{
         try{
-            const res = await axios.get("http://localhost:3000/user/requests",{withCredentials:true});
+            const res = await axios.get(BACKEND_URL+"/user/requests",{withCredentials:true});
             dispatch(addRequests(res.data.requests));
             
         }

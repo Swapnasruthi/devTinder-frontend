@@ -6,6 +6,7 @@ import axios from "axios";
 import { addUser } from "./utils/userSlice";
 import { useEffect } from "react";
 import Error from "./Error";
+import { BACKEND_URL } from "./Constants";
 // import { BackgroundBoxesDemo } from "./BG_UI";
 
 const Body = ()=> {
@@ -18,7 +19,7 @@ const Body = ()=> {
                 return navigate("/");
             };
         try{
-            const res = await axios.get("http://localhost:3000/profile",
+            const res = await axios.get(BACKEND_URL+"/profile",
                 {withCredentials:true});
             dispatch(addUser(res.data));
         }

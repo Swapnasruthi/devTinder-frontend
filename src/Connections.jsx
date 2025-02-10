@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "./utils/connectionSlice";
 import ConnectionCard from "./ConnectionCard";
-
+import { BACKEND_URL } from "./Constants";
 const Connections = ()=>{
     const dispatch = useDispatch();
     const connectionsFeed = useSelector((store) => store.connections);
@@ -12,7 +12,7 @@ const Connections = ()=>{
         
         try{
          
-            const res = await axios.get("http://localhost:3000/user/connections",{withCredentials:true});
+            const res = await axios.get(BACKEND_URL+"/user/connections",{withCredentials:true});
             dispatch(addConnections(res.data.data));
         }
         catch(err){

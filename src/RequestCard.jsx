@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { removeRequest } from "./utils/requestSlice";
+import { BACKEND_URL } from "./Constants";
 
 const RequestCard = ({_id, request})=>{
     const {firstName, lastName, gender, skills, about, userPhoto, age} = request;
@@ -8,7 +9,7 @@ const RequestCard = ({_id, request})=>{
     const dispatch = useDispatch();
     const handlingRequest = async(status, _id)=>{
         try{
-            const res = await axios.post("http://localhost:3000/request/review/"+status+"/"+_id,{},{withCredentials:true});
+            const res = await axios.post(BACKEND_URL+"/request/review/"+status+"/"+_id,{},{withCredentials:true});
             dispatch(removeRequest(_id));
 
         }

@@ -1,11 +1,10 @@
 import { useState } from "react";
 // import { useSelector } from "react-redux";
-import UserCard from "./UserCard";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "./utils/userSlice";
 import ProfileCard from "./ProfileCard";
-
+import { BACKEND_URL } from "./Constants";
 const ProfileEdit = ({user}) => {
 
     // const user = useSelector((store)=> store.user);
@@ -25,7 +24,7 @@ const ProfileEdit = ({user}) => {
             setError("");
             
 
-            const res = await axios.patch("http://localhost:3000/profile/edit",{
+            const res = await axios.patch(BACKEND_URL+"/profile/edit",{
             lastName, firstName, age, gender, userPhoto, about
                 },{withCredentials:true});
             
