@@ -25,7 +25,7 @@ const Feed = ()=>{
    },[]);
 
 
-   if(!feed) return <div>Something Went Wrong!</div>
+   if(!feed) return <div className="flex justify-center items-center mt-52 text-3xl font-bold">Loading...</div>
    if(feed.length==0) return <div className="flex justify-center mt-10">No New Users Found!</div>
     
     return feed &&(
