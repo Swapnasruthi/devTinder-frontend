@@ -14,7 +14,7 @@ const Navbar = ()=>{
       return navigate("/login");
     }
     catch(err){
-      console.error(err);
+      console.error("the error msg"+err);
     }
   }
 
