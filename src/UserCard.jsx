@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addFeed, removeUserFromFeed } from "./utils/feedSlice";
+import { addFeed, removeUserFromFeed } from "./utils/feedSlice"; // Corrected import statement
 import PropTypes from 'prop-types';
 
 const UserCard = ({ user }) => {
