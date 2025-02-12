@@ -9,7 +9,7 @@ const UserCard = ({ user }) => {
     
     const handleRequest = async (status, userId) => {
         try {
-            await axios.post("http://localhost:4000/request/send/"+status+"/"+userId,{},{withCredentials:true});
+            await axios.post(BACKEND_URL+"/request/send/"+status+"/"+userId,{},{withCredentials:true});
             
             dispatch(removeUserFromFeed(userId));
             // Call feed API again to update the feed in the redux store
