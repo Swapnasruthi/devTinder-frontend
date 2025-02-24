@@ -8,6 +8,7 @@ import AppStore from "./utils/AppStore"
 import Feed from "./Feed"
 import Connections from "./Connections"
 import Requests from "./Requests"
+import Chat from "./Chat"
 
 function App() {
  
@@ -23,6 +24,8 @@ function App() {
               <Route path="/connections" element={<Connections/>}/>
               <Route path="/requests" element={<Requests/>}/>
               <Route path="/profile" element={<Profile/>}/>
+              <Route path="/chat/:targetUserId" element={<Chat/>}/>
+
             </Route>
 
         
