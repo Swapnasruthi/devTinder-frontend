@@ -11,6 +11,7 @@ const Chat = () => {
   const userId = user?._id;
 
   const send = () => {
+    // Send the message to the server using the socket connection
     const socket = createSocketConnection();
     socket.emit("sendMessage", {
       firstName: user?.firstName,
@@ -25,11 +26,13 @@ const Chat = () => {
     if (!userId) {
       return;
     }
+
+    // Create a socket connection and join the chat room with the target user id and user id
     const socket = createSocketConnection();
     socket.emit("joinChat", { firstName: user.firstName, userId, targetUserId });
-
-    socket.on("messageReceived", ({ firstName, text }) => {
-      console.log(firstName + ":" + text);
+  
+    // Listen for messages from the server and update the messages state 
+      socket.on("messageReceived", ({ firstName, text }) => {
       setMessages((messages) => [...messages, {firstName, text}]);
       // setMessages((prevMessages) => [...prevMessages, { firstName, text }]); // Update messages state
     });
@@ -39,6 +42,7 @@ const Chat = () => {
       console.log("closing socket");
       socket.disconnect();
     };
+
   }, [userId, targetUserId]);
 
   return (
