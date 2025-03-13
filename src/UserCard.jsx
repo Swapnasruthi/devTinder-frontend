@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addFeed, removeUserFromFeed } from "./utils/feedslice";
+import { addFeed, removeUserFromFeed } from "./utils/feedSlice";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "./Constants";
 
 const UserCard = ({user})=> {
     const dispatch = useDispatch();
@@ -10,12 +11,12 @@ const UserCard = ({user})=> {
     const handleRequest = async (status, userId)=>  {
         try{
           
-            const res = await axios.post("http://localhost:3000/request/send/"+status+"/"+userId,{},{withCredentials:true});
+            const res = await axios.post(BACKEND_URL+"/request/send/"+status+"/"+userId,{},{withCredentials:true});
             dispatch(removeUserFromFeed(userId));
 
             //i called here feed api here. coz, after sending the request to first user, redux feed slice is not updating and the new user is not coming into the feed. hence i called feed api again to dispatch the feed again into the redux store.
             
-            const Res = await axios.get("http://localhost:3000/feed",{withCredentials:true});
+            const Res = await axios.get(BACKEND_URL+"/feed",{withCredentials:true});
             dispatch(addFeed(Res.data));
         }
 
