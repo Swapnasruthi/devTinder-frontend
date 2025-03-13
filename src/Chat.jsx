@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createSocketConnection } from "./utils/sockets";
+import axios from "axios";
+import { BACKEND_URL } from "./Constants";
 
 const Chat = () => {
   const { targetUserId } = useParams();
@@ -21,6 +23,22 @@ const Chat = () => {
     });
     setNewMessage(""); // Clear the input after sending the message
   };
+
+  const fetchMessages = async () =>{
+      const chat = await axios.get(BACKEND_URL+"/chat/"+targetUserId, {withCredentials: true});
+      console.log(chat.data.messages);
+
+      const chatMessages = chat?.data?.messages.map((msg) => {
+        return {
+          firstName:msg?.senderId?.firstName,
+          text:msg?.text,
+        }
+      });
+      setMessages(chatMessages);
+  }
+  useEffect(()=>{
+    fetchMessages();
+  },[]);
 
   useEffect(() => {
     if (!userId) {
@@ -50,7 +68,7 @@ const Chat = () => {
       <p className="border-b border-gray-600 p-2 text-lg font-bold w-full text-center">Chat</p>
       <div className="flex-1 overflow-scroll p-5">
         {messages.map((message, index) => (
-          <div key={index} className="chat chat-start">
+          <div key={index} className={"chat " + (user?.firstName === message.firstName ? "chat-end" : "chat-start")} >
             <div className="chat-header">
               {message.firstName || "Anonymous"}
               <time className="text-xs opacity-50 m-1">Just now</time>
